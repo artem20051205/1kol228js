@@ -1,7 +1,12 @@
-let img;
+
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1600, 1200);
     console.log("Hallo!");
+}
+let img;
+let c = 1;
+function preload() {
+  img = loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/F-15C_%D0%BD%D0%B0%D0%B4_%D0%A2%D0%B8%D1%85%D0%B8%D0%BC_%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D0%BE%D0%BC.jpg/800px-F-15C_%D0%BD%D0%B0%D0%B4_%D0%A2%D0%B8%D1%85%D0%B8%D0%BC_%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D0%BE%D0%BC.jpg');
 }
 
 function draw() {
@@ -103,5 +108,15 @@ rect(780,260,20,20)
 rect(660,360,40,60)
 rect(640,380,80,40)
 rect(620, 220, 20, 20)
-
+//8
+strokeWeight(2)
+fill(0)
+  text("link", 450, 550);
+  textSize(42);
+image(img, 450, 600, 300, 250)
+fill (0+c,0+c,255+c)
+rect (random(800,1000),random(1000,800),random(100,10))
+rect(frameCount*10,50,50,50)
+rect(frameCount%(width-50),100,50,50)
+c++
 }

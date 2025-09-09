@@ -1,22 +1,17 @@
 function setup() {
-  createCanvas(1100, 1100);
+  createCanvas(1200, 1200);
+  background("#00b7ffff");
+  fill("#272727ff")
+  triangle(400,1000,650,350,900,1000)
+  fill("#3a3a3aff")
+  triangle(300,1000,500,600,700,1000)
+  fill("#323232ff")
+  triangle(800,1000,1000,700,1200,1000)
+  fill("#272c3bff")
+  rect(0,1000,2000,12000)
+  strokeWeight(10)
+  fill("green")
+  line(0,1000,1000,1200)
 }
-
 function draw() {
-  background(220);
-fill("red")
-strokeWeight(0)
-rect(620, 100, 220,40)
-fill("#1b3c52")
-rect(620, 100, 20,20)
-rect(740, 100, 100,20)
-rect(720, 200, 80,20)
-fill("#ffc387ff")
-rect(620, 140 ,120 ,100)
-rect(720, 160 ,100 ,40)
-rect(740, 220 ,20 ,20)
-fill(0)
-rect(720, 140, 20,40)
-rect(740, 180, 20,20)
-rect(720, 200, 80,20)
 }
