@@ -14,7 +14,6 @@ let sd = 1
 let c
 let frame = true
 cp = 1300
-let carspeed = 1
 function draw() {
   background("#00b7ffff");
   fill("#272727ff")
@@ -128,16 +127,16 @@ circle (cp+450,510, 80)
 circle (cp+500,500, 100)
 
 fill ("green")
-rect(carspeed*2 % (1400) -200,950,140)
+rect(frameCount*2 % (1400) -200,950,140)
 fill("blue")
-rect(carspeed*2 % (1400)-100,950,40,80)
+rect(frameCount*2 % (1400)-100,950,40,80)
 fill(0)
-circle(carspeed*2%(1400) -200,1100,50)
-circle(carspeed*2%(1400)-50,1100,50)
+circle(frameCount*2%(1400) -200,1100,50)
+circle(frameCount*2%(1400)-50,1100,50)
 fill ("red")
-rect(carspeed % (1400) -200 ,1050,140)
+rect(frameCount % (1400) -200 ,1050,140)
 fill("blue")
-rect(carspeed%(1400)-100,1050,40,80)
+rect(frameCount%(1400)-100,1050,40,80)
 fill(0)
 circle(frameCount%(1400)-200 ,1180,40)
 circle(frameCount%(1400)-60 ,1180,40)
