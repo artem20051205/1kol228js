@@ -14,8 +14,11 @@ let sd = 1
 let c
 let frame = true
 cp = 1300
-let carspeed = 1
+stopl = 2
+carx = 1
+lightsz = 200
 function draw() {
+  lightsz ++
   background("#00b7ffff");
   fill("#272727ff")
   triangle(400,1000,650,350,900,1000)
@@ -51,24 +54,16 @@ function draw() {
   fill("#161616ff")
   rect(1000,800,50,150)
   rect(1020,950,10,90)
+  rect(850,950,10,90)
+  fill("#ff0000ff")
+  circle(850,880,130)
+  fill(255)
+  circle(850,880,110)
+  fill(0)
+  textSize(42)
+  text(130,815,890)
 
-
-if (i > 0 && i < 100){
-  fill(red)
-  circle(1025,835,30)
-  fill(darkorange)
-  circle(1025,875,30)
-  fill(darkgreen)
-  circle(1025,915,30)
-}else if (i> 200 && i<300){
-  fill(darkred)
-  circle(1025,835,30)
-  fill(orange)
-  circle(1025,875,30)
-  fill(darkgreen)
-  circle(1025,915,30)
-
-}else if (i > 100&& i <200){
+if (stopl == 2){
   fill(darkred)
   circle(1025,835,30)
   fill(darkorange)
@@ -76,12 +71,30 @@ if (i > 0 && i < 100){
   fill(green)
   circle(1025,915,30)
 }
-if (i === 300){
-  i = 0
+else if (stopl == 1){
+  fill(darkred)
+  circle(1025,835,30)
+  fill(orange)
+  circle(1025,875,30)
+  fill(darkgreen)
+  circle(1025,915,30)
 }
-else{
-  i++
+else if (stopl == 0){
+  fill(red)
+  circle(1025,835,30)
+  fill(darkorange)
+  circle(1025,875,30)
+  fill(darkgreen)
+  circle(1025,915,30)
 }
+if (lightsz >= 200){
+  lightsz = 0
+}
+strokeWeight (0)
+fill(252, 152, 3, 180)
+circle(sunp,100,lightsz)
+fill(202, 152, 3, 180)
+circle(sunp,100,lightsz+50)
 fill ("yellow")
 circle(sunp,100,80)
 if (sd === 1 && sunp < 1150) {
@@ -126,21 +139,29 @@ fill (255)
 circle (cp+400,500, 100)
 circle (cp+450,510, 80)
 circle (cp+500,500, 100)
-
+if (stopl == 2){
+  carx+=2
+}
+else if (stopl == 1){
+  carx++
+}
+else if (stopl == 0){
+  carx= carx
+}
 fill ("green")
-rect(carspeed*2 % (1400) -200,950,140)
+rect(carx*4 % (1400) -200,950,140)
 fill("blue")
-rect(carspeed*2 % (1400)-100,950,40,80)
+rect(carx*4 % (1400)-100,950,40,80)
 fill(0)
-circle(carspeed*2%(1400) -200,1100,50)
-circle(carspeed*2%(1400)-50,1100,50)
+circle(carx*4%(1400) -200,1100,50)
+circle(carx*4%(1400)-50,1100,50)
 fill ("red")
-rect(carspeed % (1400) -200 ,1050,140)
+rect(carx % (1400) -200 ,1050,140)
 fill("blue")
-rect(carspeed%(1400)-100,1050,40,80)
+rect(carx%(1400)-100,1050,40,80)
 fill(0)
-circle(frameCount%(1400)-200 ,1180,40)
-circle(frameCount%(1400)-60 ,1180,40)
+circle(carx%(1400)-200 ,1180,40)
+circle(carx%(1400)-60 ,1180,40)
 strokeWeight(1)
 fill ("#501100ff")
   rect(442,1100,20,200)
@@ -149,18 +170,16 @@ fill("#257400ff")
 
 }
 function keyPressed(){
-  if (key == "1" && frame == true){  
-  fill(red)
-  circle(1025,835,30)
-  fill(darkorange)
-  circle(1025,875,30)
-  fill(darkgreen)
-  circle(1025,915,30)
-  frameRate(0)
-  frame = false
-  }
-else if (key == "1" && frame == false){
- frame = true
- frameRate(60)
+  if (key == "Enter"){
+    if  (stopl == 2){
+      stopl = 0
+    }
+    else if (stopl == 0){
+      stopl = 1
+
+    }
+    else if (stopl ==1){
+      stopl =2 
+    }
   }
 }
