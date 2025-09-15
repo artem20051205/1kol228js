@@ -13,12 +13,17 @@ let sunp = 100
 let sd = 1
 let c
 let frame = true
-cp = 1300
+cp1 = 1300
+cp2 = 1400
+cp3 = 1350
 stopl = 2
 carx = 1
 lightsz = 200
+lightalp = 180
+balis = 0
 function draw() {
   lightsz ++
+  lightalp +=0.5
   background("#00b7ffff");
   fill("#272727ff")
   triangle(400,1000,650,350,900,1000)
@@ -89,11 +94,12 @@ else if (stopl == 0){
 }
 if (lightsz >= 200){
   lightsz = 0
+  lightalp = 0
 }
 strokeWeight (0)
-fill(252, 152, 3, 180)
+fill(252, 152, 3, lightalp)
 circle(sunp,100,lightsz)
-fill(202, 152, 3, 180)
+fill(202, 152, 3, lightalp)
 circle(sunp,100,lightsz+50)
 fill ("yellow")
 circle(sunp,100,80)
@@ -110,35 +116,42 @@ if (sd === 1 && sunp < 1150) {
 }
 strokeWeight(0)
 fill (155)
-circle (cp,180, 100)
-circle (cp+50,190, 100)
-circle (cp+100,180, 100)
+circle (cp1,180, 100)
+circle (cp1+50,190, 100)
+circle (cp1+100,180, 100)
 fill (255)
-circle (cp,200, 100)
-circle (cp+50,210, 80)
-circle (cp+100,200, 100)
+circle (cp1,200, 100)
+circle (cp1+50,210, 80)
+circle (cp1+100,200, 100)
 
-cp--
-if (cp < -600){
-  cp = 1300
+cp1-=2
+if (cp1 < -600){
+  cp1 = 1300
 }
 fill (155)
-circle (cp+200,280, 100)
-circle (cp+250,290, 100)
-circle (cp+300,280, 100)
+circle (cp2+100,280, 100)
+circle (cp2+150,290, 100)
+circle (cp2+200,280, 100)
 fill (255)
-circle (cp+200,300, 100)
-circle (cp+250,310, 80)
-circle (cp+300,300, 100)
-
+circle (cp2+100,300, 100)
+circle (cp2+150,310, 80)
+circle (cp2+200,300, 100)
+cp2--
+if (cp2 < -600){
+  cp2 = 1300
+}
 fill (155)
-circle (cp+400,480, 100)
-circle (cp+450,490, 100)
-circle (cp+500,480, 100)
+circle (cp3+250,480, 100)
+circle (cp3+300,490, 100)
+circle (cp3+350,480, 100)
 fill (255)
-circle (cp+400,500, 100)
-circle (cp+450,510, 80)
-circle (cp+500,500, 100)
+circle (cp3+250,500, 100)
+circle (cp3+300,510, 80)
+circle (cp3+350,500, 100)
+cp3-=2.5
+if (cp3 < -500){
+  cp3 = 1300
+}
 if (stopl == 2){
   carx+=2
 }
