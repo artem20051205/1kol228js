@@ -1,135 +1,231 @@
 
-let num1 = 42
-let red = "#ff0000ff";
-let orange = "#ffb300ff";
-let green = "#00ff1aff";
-let darkred = "#6b0000ff";
-let darkorange = "#725000ff";
-let darkgreen = "#004a07ff";  
-let stopl = 1 
-let balX = 400
-let balY = 400
-let mouse_p = 0
-let size = 20
-let circlex = -10
-let circley = -10
-let color1 = 0
-let color2 = 0
-let color3 = 0
 function setup() {
   createCanvas(1000, 1000);
-
 }
+let turn = 1
+let a0 = 50
+let a1 = 50
+let a2 = 50
+let b0 = 50
+let b1 = 50
+let b2 = 50
+let c0 = 50
+let c1 = 50
+let c2 = 50
+let a0_block = 1
+let a1_block = 1
+let a2_block = 1
+let b0_block = 1
+let b1_block = 1
+let b2_block = 1
+let c0_block = 1
+let c1_block = 1
+let c2_block = 1
 function draw() {
-  fill(255)
-  background(200);
-  textSize(42)
-  text("A",200,200)
-  text(num1,200,400)
-  if (keyIsDown(66)){
-  }else{
-  rect(190,160,50)
+  background(0);
+  fill(200)
+  rect(50,50,900,900,10)
+  fill(a0)
+  rect(75,75,250,250)
+  fill(a1)
+  rect(375,75,250,250)
+  fill(a2)
+  rect(675,75,250,250)
+  fill(b0)
+  rect(75,375,250,250)
+  fill(b1)
+  rect(375,375,250,250)
+  fill(b2)
+  rect(675,375,250,250)
+  fill(c0)
+  rect(75,675,250,250)
+  fill(c1)
+  rect(375,675,250,250)
+  fill(c2)
+  rect(675,675,250,250)
+  if (a1=='blue'&& a2=='blue'&& a0=='blue'){
+    turn = 11
   }
-  fill(0)
-  rect(200,600,80,240)
-  fill(red)
-  circle(240,640,60)
-  fill(darkorange)
-  circle(240,720,60)
-  fill(darkgreen)
-  circle(240,800,60)
-if (stopl == 2){
-    fill(darkred)
-  circle(240,640,60)
-  fill(orange)
-  circle(240,720,60)
-  fill(darkgreen)
-  circle(240,800,60)
-}else if (stopl == 1){
-    fill(red)
-  circle(240,640,60)
-  fill(darkorange)
-  circle(240,720,60)
-  fill(darkgreen)
-  circle(240,800,60)
-}
-else if (stopl == 0){
-    fill(darkred)
-  circle(240,640,60)
-  fill(darkorange)
-  circle(240,720,60)
-  fill(green)
-  circle(240,800,60)
-}
-circle(balX,balY,100)
-  if(keyIsDown(87)){
-    balY-=2;
+  if (b1=='blue'&& b2=='blue'&& b0=='blue'){
+    turn = 11
   }
-  if(keyIsDown(68)){
-    balX+=2;
+  if (c1=='blue'&& c2=='blue'&& c0=='blue'){
+    turn = 11
   }
-  if(keyIsDown(65)){
-    balX-=2;
+  if (a1=='blue'&& b1=='blue'&& c1=='blue'){
+    turn = 11
   }
-  if(keyIsDown(83)){
-    balY+=2;
+  if (a2=='blue'&& c2=='blue'&& c2=='blue'){
+    turn = 11
   }
-if (balX>=1050){
-  balX = -49;
-  console.log("vyuvvyuu");
-} if (balX<=-50){
-  balX = 1050;
-}
-if (balY>=1050){
-  balY = -49;
-  console.log("vyuvvyuu");
-} if (balY<=-50){
-  balY = 1050;
-}
-fill (color1,color2,color3)
-if (mouse_p == 1){
-
-  circlex =mouseX
-  circley = mouseY
-  circle(mouseX,mouseY,size)
-  if (size<= 200)
-    size+=2
-}else {
-  circle(circlex, circley, size)
-  if (circley<=height-size/2)
-    circley+=6
-  else{
-    circley = circley+0.05
+  if (a0=='blue'&& b0=='blue'&& c0=='blue'){
+    turn = 11
   }
+  if (a1=='red'&& a2=='red'&& a0=='red'){
+    turn = 12
+  }
+  if (b1=='red'&& b2=='red'&& b0=='red'){
+    turn = 12
+  }
+  if (c1=='red'&& c2=='red'&& c0=='red'){
+    turn = 12
+  }
+    if (a1=='red'&& b1=='red'&& c1=='red'){
+    turn = 12
+  }
+  if (a2=='red'&& c2=='red'&& c2=='red'){
+    turn = 12
+  }
+  if (a0=='red'&& b0=='red'&& c0=='red'){
+    turn = 12
+  }
+  if (turn == 11){
+a0_block=0
+a1_block=0
+a2_block=0
+b0_block=0
+b1_block=0
+b2_block=0
+c0_block=0
+c1_block=0
+c2_block=0
+fill(255)
+textSize(140)
+text('Blue Win',210,500)
+text('Restart',240,650)
 }
-
-
+  if (turn == 12){
+a0_block=0
+a1_block=0
+a2_block=0
+b0_block=0
+b1_block=0
+b2_block=0
+c0_block=0
+c1_block=0
+c2_block=0
+fill(255)
+textSize(140)
+text('Red Win',210,500)
+text('Restart',240,650)
 }
-function keyPressed() {
-  if (key === " ") {
-    num1 = 0;
-  } else if (key == "Enter"){
-    if  (stopl == 2){
-      stopl = 0
+  if (turn == 10){
+a0_block=0
+a1_block=0
+a2_block=0
+b0_block=0
+b1_block=0
+b2_block=0
+c0_block=0
+c1_block=0
+c2_block=0
+fill(255)
+textSize(140)
+text('Draw',280,500)
+text('Restart',240,650)
+}
+}
+function mousePressed() {
+  if (mouseX >= 75 && mouseX <= 325 && mouseY >= 75 && mouseY <= 325 && a0_block == 1) {
+    if (turn % 2 != 0) {
+      a0 = 'blue';
+    } else {
+      a0 = 'red';
     }
-    else if (stopl == 0){
-      stopl = 1
-
-    }
-    else if (stopl ==1){
-      stopl =2 
-    }
+    turn++;
+    a0_block = 0;
   }
-
-}
-
-function mousePressed(){
-  size = 0
-  mouse_p = 1
-  color1 = round(random(1,255))
-  color2 = round(random(1,255))
-  color3 = round(random(1,255))
-}
-function mouseReleased(){
-  mouse_p = 0
+  if (mouseX >= 375 && mouseX <= 625 && mouseY >= 75 && mouseY <= 325 && a1_block == 1) {
+    if (turn % 2 != 0) {
+      a1 = 'blue';
+    } else {
+      a1 = 'red';
+    }
+    turn++;
+    a1_block = 0;
+  }
+  if (mouseX >= 675 && mouseX <= 925 && mouseY >= 75 && mouseY <= 325 && a2_block == 1) {
+    if (turn % 2 != 0) {
+      a2 = 'blue';
+    } else {
+      a2 = 'red';
+    }
+    turn++;
+    a2_block = 0;
+  }
+  if (mouseX >= 75 && mouseX <= 325 && mouseY >= 375 && mouseY <= 625 && b0_block == 1) {
+    if (turn % 2 != 0) {
+      b0 = 'blue';
+    } else {
+      b0 = 'red';
+    }
+    turn++;
+    b0_block = 0;
+  }
+  if (mouseX >= 375 && mouseX <= 625 && mouseY >= 375 && mouseY <= 625 && b1_block == 1) {
+    if (turn % 2 != 0) {
+      b1 = 'blue';
+    } else {
+      b1 = 'red';
+    }
+    turn++;
+    b1_block = 0;
+  }
+  if (mouseX >= 675 && mouseX <= 925 && mouseY >= 375 && mouseY <= 625 && b2_block == 1) {
+    if (turn % 2 != 0) {
+      b2 = 'blue';
+    } else {
+      b2 = 'red';
+    }
+    turn++;
+    b2_block = 0;
+  }
+  if (mouseX >= 75 && mouseX <= 325 && mouseY >= 675 && mouseY <= 925 && c0_block == 1) {
+    if (turn % 2 != 0) {
+      c0 = 'blue';
+    } else {
+      c0 = 'red';
+    }
+    turn++;
+    c0_block = 0;
+  }
+  if (mouseX >= 375 && mouseX <= 625 && mouseY >= 675 && mouseY <= 925 && c1_block == 1) {
+    if (turn % 2 != 0) {
+      c1 = 'blue';
+    } else {
+      c1 = 'red';
+    }
+    turn++;
+    c1_block = 0;
+  }
+  if (mouseX >= 675 && mouseX <= 925 && mouseY >= 675 && mouseY <= 925 && c2_block == 1) {
+    if (turn % 2 != 0) {
+      c2 = 'blue';
+    } else {
+      c2 = 'red';
+    }
+    turn++;
+    c2_block = 0;
+  }
+  if (turn >= 10 && mouseX >= 240 && mouseX <= 760 && mouseY >= 510 && mouseY <= 670) {
+    a0_block = 1 
+    a1_block = 1 
+    a2_block = 1
+    b0_block = 1 
+    b1_block = 1 
+    b2_block = 1
+    c0_block = 1 
+    c1_block = 1 
+    c2_block = 1
+    a0 = 50
+    a1 = 50
+    a2 = 50
+    b0 = 50
+    b1 = 50
+    b2 = 50
+    c0 = 50
+    c1 = 50
+    c2 = 50
+    turn = 1;
+  }
 }
