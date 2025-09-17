@@ -13,17 +13,31 @@ let sunp = 100
 let sd = 1
 let c
 let frame = true
-cp1 = 1300
-cp2 = 1400
-cp3 = 1350
-stopl = 2
-carx = 1
-lightsz = 200
-lightalp = 180
-balis = 0
+let cp1 = 1300
+let cp2 = 1400
+let cp3 = 1350
+let stopl = 2
+let carx = 1
+let lightsz = 200
+let lightalp = 180
+let balis = 0
+let lm = 0
+let lmd = 0
 function draw() {
   lightsz ++
   lightalp +=0.5
+if (lmd == 0) {
+  lm += 0.2;
+  if (lm >= 10) {
+    lmd = 1; 
+  }
+} else if (lmd == 1) {
+  lm -= 0.2;
+  if (lm <= 0) {
+    lmd = 0;
+  }
+}
+
   background("#00b7ffff");
   fill("#272727ff")
   triangle(400,1000,650,350,900,1000)
@@ -51,15 +65,26 @@ function draw() {
   rect(150,820,20,200)
   rect(320,820,20,200)
   rect(600,820,20,200)
+
+  fill("#519a2fff")
+  circle(lm*0.55+50,820,150)
+  circle(lm*0.51+150,820,150)
+  circle(lm*0.59+320,820,150)
+  circle(lm*0.52+600,820,150)
+  fill("#41b00eff")
+  circle(lm/0.58+50,820,150)
+  circle(lm/0.53+150,820,150)
+  circle(lm/0.56+320,820,150)
+  circle(lm/0.54+600,820,150)
   fill("#257400ff")
-  circle(50,820,150)
-  circle(150,820,150)
-  circle(320,820,150)
-  circle(600,820,150)
+  circle(lm+50,820,150)
+  circle(lm+150,820,150)
+  circle(lm+320,820,150)
+  circle(lm+600,820,150)
   fill("#161616ff")
   rect(1000,800,50,150)
   rect(1020,950,10,90)
-  rect(850,950,10,90)
+  rect(850,940,10,100)
   fill("#ff0000ff")
   circle(850,880,130)
   fill(255)
@@ -178,8 +203,10 @@ circle(carx%(1400)-60 ,1180,40)
 strokeWeight(1)
 fill ("#501100ff")
   rect(442,1100,20,200)
+  fill("#41b00eff")
+  circle(lm/0.5+442,1100,150)
 fill("#257400ff")
-  circle(442,1100,150)
+  circle(lm+442,1100,150)
 
 }
 function keyPressed(){
