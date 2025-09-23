@@ -11,6 +11,9 @@ let board = [
 let turn_color = 'blue'
 let b_color = 'red'
 let check = 0
+let end_Game = 0
+let blue_Score = 0
+let red_Score = 0
 function draw(){
   if (turn%2 !== 0){
     b_color = 'blue'
@@ -30,10 +33,14 @@ for (row = 0; row<=2;row++){
   rect(x,y,120,120,20)
   }
  }
+  
 checkWin('blue')
 checkWin('red')
+textSize(42)
+text(blue_Score,100,790)
 
 }
+
 function mouseClicked() {
   for (row = 0; row<=2;row++){
    for(col = 0; col<=2;col++){
@@ -51,24 +58,58 @@ function mouseClicked() {
     }
     }
   }
+  if(end_Game = 1 && mouseX >= 300 && mouseX <= 450 && mouseY >= 450 && mouseY <= 480){
+    board = board.map(row =>
+  row.map(() => 50))  
+  }
+}
+function end_Screen(win_Color){
+  textSize(42)
+  text(win_Color,290,280)
+  if (end_Game = 1 && mouseX >= 300 && mouseX <= 450 && mouseY >= 450 && mouseY <= 480){
+stroke('red')
+  strokeWeight(10)
+}
+  text('Restart',300,480)
+  strokeWeight(2)
+  stroke(0)
 }
 function checkWin(color){
-if (board[0][0]== color&&
-    board[0][1]== color&&
-    board[0][2]== color||
-    board[1][0]== color&&
-    board[1][1]== color&&
-    board[1][2]== color||
-    board[2][0]== color&&
-    board[2][1]== color&&
-    board[2][2]== color
+if (board[0][0] == color&&
+    board[0][1] == color&&
+    board[0][2] == color||
+    board[1][0] == color&&
+    board[1][1] == color&&
+    board[1][2] == color||
+    board[2][0] == color&&
+    board[2][1] == color&&
+    board[2][2] == color||
+    board[0][0] == color&&
+    board[1][0] == color&&
+    board[2][0] == color||
+    board[0][1] == color&&
+    board[1][1] == color&&
+    board[2][1] == color||
+    board[0][2] == color&&
+    board[1][2] == color&&
+    board[2][2] == color||
+    board[0][0] == color&&
+    board[1][1] == color&&
+    board[2][2] == color||
+    board[0][2] == color&&
+    board[1][1] == color&&
+    board[2][0] == color
 
-){
-  console.log('win '+color)
-  while (check < 9){
-    if(board[check][check]){
-      board[check][check]= 255
-    }
+){board = board.map(row =>
+  row.map(cell => cell === 50 ? 51 : cell)
+);if (color == 'blue'){
+  fill('#255bffff')
+  end_Screen('Blue Win')
+  end_Game = 1
+}else{
+  fill('#ff3b3bff')
+  end_Screen('Red Win')
+  end_Game = 1
   }
 }
 }
