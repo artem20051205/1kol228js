@@ -25,14 +25,16 @@ function draw(){
     turn_color = 'red'
   }
   background('blue')
-  if (b_rectX_move == 1){
+  if (b_rectX_move == 1&& end_Game!=1){
     if (b_rectX <=600){
       b_rectX+=15
     }
-  }else if (b_rectX_move == 0){
+  }else if (b_rectX_move == 0&& end_Game!= 1 ){
     if (b_rectX>=140){
       b_rectX-=15
     }
+  }else if (end_Game == 1){
+    b_rectX = 400
   }
   fill('red')
   rect(b_rectX,0,800)
@@ -143,16 +145,4 @@ function checkWin(){
     fill('#474747ff')
     end_Screen('  Draw')
   }
-}
-function keyPressed(){
-  if (key == 1&& board[0][0]== 50){
-    board[0][0] = b_color
-    turn++
-  }else if (key == 2&& board[0][1]== 50){
-    board[0][1] = b_color
-    turn++
-}else if (key == 3&& board[0][2]== 50){
-    board[0][2] = b_color
-    turn++
-}
 }
