@@ -16,7 +16,7 @@ let b_rectX_move = 1;
 let triangle_y = 0;
 let triangle_y_move = 0;
 function draw(){
-  strokeWeight(0);
+  strokeWeight(0);//wie moet gaan 
   if (turn%2 != 0){
     b_color = 'blue';
     turn_color = 'blue';
@@ -24,7 +24,7 @@ function draw(){
     b_color = 'red'
     turn_color = 'red'
   }
-  background('blue')
+  background('blue')//background animation
   if (b_rectX_move == 1&& end_Game!=1){
     if (b_rectX <=600){
       b_rectX+=15
@@ -101,7 +101,7 @@ function mouseClicked() {
     end_Game = 0
   }
 }
-function end_Screen(win_Color){//end screen 
+function end_Screen(win_Color){//end sherm
   textSize(42)
   text(win_Color,290,280)
   if (end_Game == 1 && mouseX >= 300 && mouseX <= 450 && mouseY >= 450 && mouseY <= 480){
@@ -130,7 +130,7 @@ function checkWin(){
       board[0][2] == board[1][1]&& board[0][2] != 50&&
       board[1][1] == board[2][0]){//stop game
     board = board.map(row =>
-    row.map(cell => cell === 50 ? 51 : cell));
+    row.map(cell => cell === 50 ? 51 : cell));//block all
     if (turn%2 == 0){
       fill('#255bffff')
       end_Screen('Blue Win')
