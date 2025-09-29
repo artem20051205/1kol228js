@@ -216,7 +216,6 @@ function keyPressed(){
     }
     else if (stopl == 0){
       stopl = 1
-
     }
     else if (stopl ==1){
       stopl =2 

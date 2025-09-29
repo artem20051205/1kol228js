@@ -1,23 +1,16 @@
 function setup() {
   createCanvas(1000, 1000);
 }
-
+let alp = 0
+let draw_r = 0
 function draw() {
   if (keyIsDown(32)) {
-    for (let i = 0; i < 100; i++) {
-      let x = random(100, 900);
-      let y = random(100, 900);
-      let r = random(0, 255);
-      let g = random(0, 255);
-      let b = random(0, 255);
-      let h = random(10, 100);
-      let alpha = random(100, 255);
-      fill(r, g, b, alpha);
-      if (random() < 0.5) {
-        circle(x, y, h);
-      } else {
-        rect(x, y, h, h);
-      }
-    }
+    draw_r = 1
+    alp++ 
   }
+if (draw_r==1){
+  fill(alp,alp,alp,alp)
+  rect(100,100,100)
 }
+}
+
