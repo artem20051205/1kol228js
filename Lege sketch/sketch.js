@@ -22,9 +22,25 @@
 //}
 //
 function setup() {
-  createCanvas(380, 350);
+  createCanvas(1080, 450);
+  //8
+for (let i =0;i<5;i++){
+  color11 = random(0,255)
+  color22 = random(0,255)
+  color33 = random(0,255)
+  fill(color11,color22,color33)
+  rect(x_rect,40,40)
+  x_rect+=40
 }
-
+}
+let woord = "Overheidsfinancieringstekort";
+let e_count = 0;
+for (let i = 0; i < woord.length; i++) {
+    if (woord[i] === 'e') {
+      e_count++;
+    }
+  }
+  let x_rect = 240
 function draw() {
   let colors = ["red", "green", "blue", "purple", "yellow"]
   let nums = [ 400, 240, 10, 490, 30, 60, 244, 500, 301, 30]
@@ -79,6 +95,13 @@ for (let i = 0; i<andereGetall.length;i++){
   nuums +=andereGetall[i]
 }
 text(nuums,140,140)
-let woord = Overheidsfinancieringstekort
+//6
+fill(0)
+text('e in woord='+e_count,140,180)
+//7
+ let colors7 = ["red", "green", "blue", "purple", "yellow"]
+sort(colors7)
+text(colors7,140,240)
+
 }
 
