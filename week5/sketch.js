@@ -1,75 +1,74 @@
-let color = 1;
-let colorboard = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
-
+let board = [];
+let gridSize = 50;
 let cellSize = 20;
-
+let currentColor = 'red';
+let palette = ['white', 'black', 'grey', 'cyan', 'lime','yellow','orange','purple','pink','indigo','magenta','teal',];
+let mode = 0
 function setup() {
-  createCanvas(800, 800);
-  noStroke();
+  createCanvas(windowWidth, windowHeight);
+  for (let y = 0; y < gridSize; y++) {
+    board.push([]);
+    for (let x = 0; x < gridSize; x++) {
+      board[y].push('white');
+    }
+  }
 }
 
 function draw() {
   background(220);
-
-  for (let y = 0; y < colorboard.length; y++) {
-    for (let x = 0; x < colorboard[y].length; x++) {
-      if (colorboard[y][x] == 0) fill(255);
-      else if (colorboard[y][x] == 1) fill(0);
-      rect(x * cellSize + 50, y * cellSize + 50, cellSize, cellSize);
+  for (let y = 0; y < gridSize; y++) {
+    for (let x = 0; x < gridSize; x++) {
+      fill(board[y][x]);
+      rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
 
-  fill(0);
-  circle(700, 550, 100);
-  let d = dist(mouseX, mouseY, 700, 550);
-  if (d < 50) {
-    strokeWeight(5);
-    stroke('red');
-    noFill();
-    circle(700, 550, 100);
-    noStroke();
-    fill(255);
-    textSize(16);
-    textAlign(CENTER, CENTER);
-    text('color', 700, 550);
+  for (let i = 0; i < palette.length; i++) {
+    fill(palette[i]);
+    let x = 25 + i * (cellSize + 10);
+    let y = gridSize * cellSize + 20;
+    rect(x, y, cellSize, cellSize);
   }
 }
 
+function mouseDragged() {
+  let x = Math.floor(mouseX / cellSize);
+  let y = Math.floor(mouseY / cellSize);
+  
+  if (x >= 0 && x < gridSize && y >= 0 && y < gridSize) {
+    board[y][x] = currentColor;
+  }
+ if (x >= 0 && x < gridSize && y >= 0 && y < gridSize&& mode != 0){
+  board[y][x] = currentColor;
+  board[y][x+mode] = currentColor;
+  board[y][x-mode] = currentColor;
+  board[y-mode][x] = currentColor;
+  board[y+mode][x] = currentColor;
+ }
+}
 function mouseClicked() {
-  let d = dist(mouseX, mouseY, 700, 550);
-  if (d < 50) {
-    if (color === 1) {
-      color = 0;
-    } else {
-      color = 1;
-    }
-  } else {
-    let gridX = floor((mouseX - 50) / cellSize);
-    let gridY = floor((mouseY - 50) / cellSize);
+  let startY = gridSize * cellSize + 20;
+  
+  for (let i = 0; i < palette.length; i++) {
+    let x = 25 + i * (cellSize + 10);
     if (
-      gridX >= 0 && gridX < colorboard[0].length &&
-      gridY >= 0 && gridY < colorboard.length
+      mouseX > x && mouseX < x + cellSize &&
+      mouseY > startY && mouseY < startY + cellSize
     ) {
-      colorboard[gridY][gridX] = color;
+      currentColor = palette[i];
     }
+  }
+}
+function keyPressed() {
+  if (key == 'r') currentColor = 'red';
+  if (key == 'b') currentColor = 'blue';
+  if (key == 'g') currentColor = 'green';
+  if (key == 'g') currentColor = 'green';
+  if (key == 'm'&& mode == 0) {
+    mode = 1
+  }else if (key == 'm'&& mode == 1){
+    mode = 2
+  }else if (key == 'm'&& mode == 2){
+    mode = 0
   }
 }
