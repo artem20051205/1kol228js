@@ -1,6 +1,6 @@
 board = [];
 adwise = [];
-gridSize = 42;
+gridSize = 42 ;
 cellSize = 18;
 paintmode = 0;
 let mode = 0;
